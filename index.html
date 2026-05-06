@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>שני לוי | תוכן · שיווק · פודקאסטים</title>
+<link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #E03234;
+    --coral-light: #FFB6C2;
+    --coral-pale: #FFF0F3;
+    --dark: #2C2424;
+    --mid: #6B5C5C;
+    --light: #FDF5F6;
+    --white: #FFFFFF;
+    --font-main: 'Alef', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-main);
+    color: var(--dark);
+    background: var(--white);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; right: 0; left: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #f0e8e8;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--coral);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--mid);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--coral); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, var(--coral-pale) 0%, var(--white) 60%);
+    padding: 100px 80px 60px;
+    position: relative;
+    overflow: hidden;
+    gap: 60px;
+  }
+
+  .hero-image {
+    flex: 0 0 420px;
+    height: 580px;
+    border-radius: 32px;
+    overflow: hidden;
+    order: -1;
+    box-shadow: 0 24px 64px rgba(217,107,98,0.18);
+    position: relative;
+  }
+
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 32px;
+    border: 3px solid rgba(217,107,98,0.2);
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: -120px;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(217,107,98,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '✦';
+    position: absolute;
+    bottom: 80px;
+    left: 100px;
+    font-size: 4rem;
+    color: rgba(217,107,98,0.08);
+  }
+
+  .hero-content { max-width: 680px; position: relative; }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--coral);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+
+  .hero h1 span { color: var(--coral); }
+
+  .hero-studio {
+    font-size: 1.4rem;
+    color: var(--coral-light);
+    font-weight: 600;
+    margin-bottom: 28px;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    color: var(--coral);
+  }
+
+  .hero-divider span { font-size: 1.1rem; }
+  .hero-divider hr { flex: 1; max-width: 60px; border: none; border-top: 2px solid var(--coral); }
+
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--mid);
+    max-width: 540px;
+    margin-bottom: 40px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--coral);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 4px 20px rgba(217,107,98,0.3);
+  }
+
+  .btn-primary:hover { background: #c45e56; transform: translateY(-2px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--coral);
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 2px solid var(--coral);
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover { background: var(--coral-pale); }
+
+  /* SECTION BASE */
+  section { padding: 90px 80px; }
+
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .section-sub {
+    font-size: 1.05rem;
+    color: var(--mid);
+    max-width: 560px;
+    margin-bottom: 56px;
+  }
+
+  /* ABOUT */
+  .about {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+    color: var(--mid);
+    margin-bottom: 20px;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .stat-card {
+    background: var(--coral-pale);
+    border-radius: 16px;
+    padding: 28px 24px;
+    border-right: 4px solid var(--coral);
+  }
+
+  .stat-number {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--coral);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 0.88rem;
+    color: var(--mid);
+    font-weight: 500;
+  }
+
+  /* SERVICES */
+  .services { background: var(--light); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 36px 28px;
+    transition: transform 0.25s, box-shadow 0.25s;
+    border: 1px solid #f0e4e4;
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(217,107,98,0.12);
+  }
+
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .service-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+
+  .service-card p {
+    font-size: 0.92rem;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+
+  /* EXPERIENCE */
+  .experience { background: var(--white); }
+
+  .timeline { position: relative; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--coral), transparent);
+  }
+
+  .timeline-item {
+    padding-right: 36px;
+    padding-bottom: 48px;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--coral);
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--coral);
+  }
+
+  .timeline-date {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--coral);
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .timeline-role {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+
+  .timeline-org {
+    font-size: 0.95rem;
+    color: var(--coral-light);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .timeline-desc {
+    font-size: 0.93rem;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+
+  .timeline-desc li {
+    margin-bottom: 6px;
+    padding-right: 12px;
+    position: relative;
+    list-style: none;
+  }
+
+  .timeline-desc li::before {
+    content: '◆';
+    position: absolute;
+    right: 0;
+    color: var(--coral);
+    font-size: 0.5rem;
+    top: 7px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--coral);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-right: 8px;
+    margin-top: 10px;
+  }
+
+  /* SKILLS */
+  .skills { background: var(--coral-pale); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .skill-pill {
+    background: white;
+    border: 1.5px solid rgba(217,107,98,0.25);
+    border-radius: 50px;
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--dark);
+    transition: all 0.2s;
+  }
+
+  .skill-pill:hover {
+    border-color: var(--coral);
+    color: var(--coral);
+    background: white;
+  }
+
+  /* PODCAST */
+  .podcast {
+    background: var(--dark);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .podcast::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(217,107,98,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .podcast .section-label { color: var(--coral-light); }
+  .podcast .section-title { color: white; }
+  .podcast .section-sub { color: rgba(255,255,255,0.6); }
+
+  .podcast-inner {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .podcast-cover {
+    width: 260px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+    flex-shrink: 0;
+  }
+
+  .podcast-cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 900px) {
+    .podcast-inner { grid-template-columns: 1fr; }
+    .podcast-cover { width: 180px; margin: 0 auto; }
+  }
+
+  .podcast-desc p {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.05rem;
+    margin-bottom: 16px;
+  }
+
+  .podcast-platforms {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .platform-btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 24px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.22s;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.06);
+    color: white;
+  }
+
+  .platform-btn:hover {
+    transform: translateX(-4px);
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.25);
+  }
+
+  .platform-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+  }
+
+  .platform-btn.spotify .platform-icon  { background: #1DB954; }
+  .platform-btn.apple   .platform-icon  { background: #fc3c44; }
+  .platform-btn.youtube .platform-icon  { background: #FF0000; }
+  .platform-btn.all     .platform-icon  { background: var(--coral); }
+
+  .platform-btn-text { display: flex; flex-direction: column; line-height: 1.2; }
+  .platform-btn-text span { font-size: 0.75rem; opacity: 0.5; font-weight: 400; margin-top: 2px; }
+
+  .platform-arrow { margin-right: auto; opacity: 0.3; font-size: 1.1rem; transition: opacity 0.2s, transform 0.2s; }
+  .platform-btn:hover .platform-arrow { opacity: 0.7; transform: translateX(-3px); }
+
+  /* VIDEOS */
+  .videos { background: var(--light); }
+
+  .videos-landscape {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .videos-portrait {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .vid-thumb {
+    display: block;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+    background: #111;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .vid-thumb:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.18); }
+
+  .vid-thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.2s;
+  }
+
+  .vid-thumb:hover img { opacity: 0.85; }
+
+  .vid-thumb .aspect-16-9 { aspect-ratio: 16/9; }
+  .vid-thumb .aspect-9-16 { aspect-ratio: 9/16; }
+
+  .play-btn {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px; height: 56px;
+    background: var(--coral);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  .play-btn svg { width: 22px; height: 22px; fill: white; margin-right: -3px; }
+  .vid-thumb:hover .play-btn { transform: translate(-50%, -50%) scale(1.12); background: #c45e56; }
+
+  @media (max-width: 900px) {
+    .videos-landscape { grid-template-columns: 1fr; }
+    .videos-portrait { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* PODCAST GALLERY */
+  .podcast-gallery { background: var(--light); }
+
+  .pgallery-track-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pgallery-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    will-change: transform;
+  }
+
+  .pgallery-card {
+    flex: 0 0 calc(25% - 15px);
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+    background: #eee;
+  }
+
+  .pgallery-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+  }
+
+  .pgallery-card:hover img { transform: scale(1.04); }
+
+  .pgallery-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .pgallery-btn {
+    background: var(--coral);
+    color: white;
+    border: none;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 14px rgba(224,50,52,0.3);
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .pgallery-btn:hover { background: #c42a2b; transform: scale(1.08); }
+
+  .pgallery-dots {
+    display: flex;
+    gap: 8px;
+  }
+
+  .pgallery-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(224,50,52,0.2);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .pgallery-dot.active {
+    background: var(--coral);
+    width: 22px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 900px) {
+    .pgallery-card { flex: 0 0 calc(50% - 10px); }
+  }
+
+  /* CONTACT */
+  .contact {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+  }
+
+  .contact .section-title { color: white; }
+  .contact .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 48px; }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    background: rgba(255,255,255,0.08);
+    padding: 14px 28px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    background: var(--coral);
+    border-color: var(--coral);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 24px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.82rem;
+  }
+
+  footer span { color: var(--coral-light); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    nav .nav-links { display: none; }
+    .hero { padding: 100px 32px 60px; }
+    section { padding: 64px 32px; }
+    .about { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { flex-direction: column; gap: 8px; padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">שני לוי ✦ פוני</div>
+  <ul class="nav-links">
+    <li><a href="#about">אודות</a></li>
+    <li><a href="#services">שירותים</a></li>
+    <li><a href="#experience">ניסיון</a></li>
+    <li><a href="#videos">וידאו</a></li>
+    <li><a href="#podcast">פודקאסט</a></li>
+    <li><a href="#contact">צור קשר</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-image">
+    <img src="images/hero.jpg" alt="שני לוי">
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">פוני סטודיו ✦ תוכן ושיווק</div>
+    <h1>שני <span>לוי</span></h1>
+    <div class="hero-studio">Content · Marketing · Podcasts</div>
+    <div class="hero-divider">
+      <span>◆</span><hr><span>◆</span><hr><span>◆</span>
+    </div>
+    <p>
+      מעל 10 שנים של תוכן, שיווק ודוברות במגזר הציבורי והחברתי.
+      מייסדת הפודקאסט העירוני הראשון בישראל.
+      עוזרת לעסקים ולארגונים לדבר בקול אמיתי — ולגרום לזה לעבוד.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">דברו איתי</a>
+      <a href="#services" class="btn-secondary">מה אני עושה</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text">
+    <div class="section-label">אודות</div>
+    <h2 class="section-title">חיה ונושמת תוכן</h2>
+    <p>
+      שמי שני לוי, בת 35 מתל אביב-יפו. כ-7 שנים אני עובדת בדוברות עיריית תל אביב-יפו, שם הקמתי את הפודקאסט העירוני הראשון בישראל ומנהלת את תחום הפודקאסטים בדוברות.
+    </p>
+    <p>
+      מעבר לעיריה, אני מנהלת את <strong>פוני סטודיו</strong> — סטודיו ליצירת תוכן, ייעוץ שיווקי והקמת פודקאסטים לעסקים ולארגונים חברתיים. אני מביאה ידיים על הביצוע, לא רק ייעוץ מהצד.
+    </p>
+    <p>
+      בעלת תואר ראשון בתקשורת, הסמכות גוגל ומטא, וניסיון של מעל עשור בכל מה שנוגע לפרסום ושיווק דיגיטלי.
+    </p>
+  </div>
+  <div class="about-stats">
+    <div class="stat-card">
+      <div class="stat-number">10+</div>
+      <div class="stat-label">שנות ניסיון בשיווק דיגיטלי</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">1,000+</div>
+      <div class="stat-label">משתתפים באירועי "טיוטות מהסמארטפון"</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">#1</div>
+      <div class="stat-label">פודקאסט עירוני ראשון בישראל</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2021</div>
+      <div class="stat-label">מצטיינת ראש העיר לדיגיטל</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">שירותים</div>
+  <h2 class="section-title">מה פוני סטודיו עושה</h2>
+  <p class="section-sub">שילוב של הדרכה, ליווי ויעוץ יחד עם ביצוע ברמה הכי גבוהה — לא רק מייעצים, עושים.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🎙️</span>
+      <h3>פודקאסטים מהתחלה ועד הסוף</h3>
+      <p>הקמה, ניהול ותחזוק של פודקאסטים לארגונים וחברות. תחקיר, הפקה, הגשה, הקלטה — הכל בבית. ניסיון מוכח מדוברות עיריית תל אביב.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📱</span>
+      <h3>ניהול סושיאל מדיה</h3>
+      <p>יצירת תוכן דיגיטלי לפייסבוק, אינסטגרם, טיקטוק, יוטיוב וניוזלטר. שיווק שמדבר בצורה אמיתית ומביא תוצאות.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🎯</span>
+      <h3>ייעוץ ושיווק דיגיטלי</h3>
+      <p>ליווי אישי לעסקים קטנים ובינוניים עם דגש על המגזר הציבורי-חברתי. עוזרת לכם לדבר על העסק שלכם בצורה אמיתית שעושה את זה.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">✍️</span>
+      <h3>יצירת תוכן ואסטרטגיה</h3>
+      <p>בניית אסטרטגיית תוכן, כתיבה, עריכה ופרסום. ניסיון בפרסום בגוגל ומטא — תוכן שמגיע לאנשים הנכונים.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🎤</span>
+      <h3>הדרכה ופרזנטציה</h3>
+      <p>הכשרה מעשית להתמודדות מול מצלמה, שיווק עצמי ברשתות ויצירת נוכחות דיגיטלית מנצחת לבעלי עסקים.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🎪</span>
+      <h3>הפקת אירועים ותוכן</h3>
+      <p>יוזמה, הפקה וניהול אירועים — ממיני-ארועים ועד פרודקשן גדול. ניסיון באירועי הסברה, קמפיינים ואירועי קהילה.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="section-label">ניסיון</div>
+  <h2 class="section-title">הדרך עד כאן</h2>
+  <p class="section-sub">מהצבא, דרך ברלין, לפודקאסט הראשון של עיריית תל אביב.</p>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-date">2022 – היום</div>
+      <div class="timeline-role">רפרנטית קהילה, תרבות וספורט ומנהלת תחום פודקאסטים</div>
+      <div class="timeline-org">דוברות עיריית תל אביב-יפו</div>
+      <ul class="timeline-desc">
+        <li>יצירת תוכן דיגיטלי בכל ערוצי העירייה — פייסבוק, אינסטגרם, טיקטוק, יוטיוב, ניוזלטר ועוד</li>
+        <li>יוזמת, מפיקה ומגישה את "ללא הפסקה" — הפודקאסט העירוני הראשון בישראל</li>
+        <li>הפקת אירועי הסברה בשלל תחומים אורבניים</li>
+        <li>ניהול תחום הפודקאסטים בדוברות העירייה</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2022 – היום</div>
+      <div class="timeline-role">מייסדת ומנהלת פוני סטודיו | יועצת תוכן שיווקי (פרילנס)</div>
+      <div class="timeline-org">פוני סטודיו</div>
+      <ul class="timeline-desc">
+        <li>ייעוץ וליווי שיווקי לעסקים קטנים: פסטיבל קולנוע IFFF, קליניקת מיילדות, מכון התרבות הפולני, חנוך פיבן, זומו המוזיאון שבדרך</li>
+        <li>הקמה וניהול פודקאסטים לארגונים ומערכות גדולות</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2019 – 2022</div>
+      <div class="timeline-role">מנהלת שיווק יחידת הצעירים</div>
+      <div class="timeline-org">עיריית תל אביב-יפו</div>
+      <ul class="timeline-desc">
+        <li>אחראית לכל תוצרי הדיגיטל והפרינט של יחידת הצעירים וניהול מזא"ה 9</li>
+        <li>ייזום קמפיין פרינט ב-80 תחנות אוטובוס — הקמפיין העירוני הראשון בעברית רב-מגדרית</li>
+        <li>ייזום הפודקאסט הרשמי של יחידת הצעירים — הפודקאסט המוניציפלי הראשון בישראל</li>
+        <li>ניהול צוות תוכן, הדרכה וליווי עובדים בתחומי שיווק ודיגיטל</li>
+      </ul>
+      <span class="badge">🏆 מצטיינת ראש העיר לדיגיטל 2021</span>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2017 – 2020</div>
+      <div class="timeline-role">מייסדת ומנהלת "טיוטות מהסמארטפון"</div>
+      <div class="timeline-org">יוזמה עצמאית</div>
+      <ul class="timeline-desc">
+        <li>ייזום וניהול סדרת אירועים בהשתתפות 1,000+ איש, כולל אירוע של 300 משתתפים בבית אריאלה</li>
+        <li>ניהול קהילה של מעל 1,300 משתתפים</li>
+        <li>פיתוח תוכן, מיון ועריכת טקסטים, הפקת אירועים, שיווק וניהול קהילה</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2010 – 2015</div>
+      <div class="timeline-role">קניינית רכש של חיל הים</div>
+      <div class="timeline-org">שגרירות ישראל בברלין, גרמניה</div>
+      <ul class="timeline-desc">
+        <li>רכש ציוד ביטחוני עבור חיל הים, עבודה מול חברות בגרמניה ואירופה</li>
+        <li>ניהול תקציבים, משא ומתן באנגלית וגרמנית, הקמת מכרזים לספקים</li>
+      </ul>
+      <span class="badge">🏅 מצטיינת מטה חיל הים 2010</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="section-label">כישורים</div>
+  <h2 class="section-title">מה שאני מביאה לשולחן</h2>
+  <p class="section-sub"></p>
+
+  <div class="skills-grid">
+    <div class="skill-pill">אסטרטגיית תוכן</div>
+    <div class="skill-pill">ניהול סושיאל מדיה</div>
+    <div class="skill-pill">הפקת פודקאסטים</div>
+    <div class="skill-pill">פרסום בגוגל</div>
+    <div class="skill-pill">פרסום במטא</div>
+    <div class="skill-pill">כתיבה שיווקית</div>
+    <div class="skill-pill">הפקת אירועים</div>
+    <div class="skill-pill">הדרכה וליווי</div>
+    <div class="skill-pill">ניהול קהילות</div>
+    <div class="skill-pill">דוברות ויח"צ</div>
+    <div class="skill-pill">עברית · אנגלית · גרמנית</div>
+    <div class="skill-pill">חשיבה יצירתית</div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section class="videos" id="videos">
+  <div class="section-label">תוכן</div>
+  <h2 class="section-title">עבודות נבחרות</h2>
+  <p class="section-sub">תוכן שיצרתי עבור לקוחות וגופים שונים</p>
+
+  <div class="videos-landscape">
+    <a class="vid-thumb" href="https://youtu.be/tnTdQP3TJdE" target="_blank">
+      <div class="aspect-16-9">
+        <img src="https://img.youtube.com/vi/tnTdQP3TJdE/hqdefault.jpg" alt="וידאו" onerror="this.src='https://img.youtube.com/vi/tnTdQP3TJdE/mqdefault.jpg'">
+      </div>
+      <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+    </a>
+    <a class="vid-thumb" href="https://youtu.be/0InzTjvAu9A" target="_blank">
+      <div class="aspect-16-9">
+        <img src="https://img.youtube.com/vi/0InzTjvAu9A/hqdefault.jpg" alt="וידאו" onerror="this.src='https://img.youtube.com/vi/0InzTjvAu9A/mqdefault.jpg'">
+      </div>
+      <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+    </a>
+  </div>
+
+  <div class="videos-portrait">
+    <a class="vid-thumb" href="https://youtube.com/shorts/whfRHepsxYk" target="_blank">
+      <div class="aspect-9-16">
+        <img src="https://img.youtube.com/vi/whfRHepsxYk/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/whfRHepsxYk/mqdefault.jpg'">
+      </div>
+      <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+    </a>
+    <a class="vid-thumb" href="https://youtube.com/shorts/b-UEi7eBZfs" target="_blank">
+      <div class="aspect-9-16">
+        <img src="https://img.youtube.com/vi/b-UEi7eBZfs/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/b-UEi7eBZfs/mqdefault.jpg'">
+      </div>
+      <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+    </a>
+    <a class="vid-thumb" href="https://youtube.com/shorts/d5jMKg6yv4I" target="_blank">
+      <div class="aspect-9-16">
+        <img src="https://img.youtube.com/vi/d5jMKg6yv4I/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/d5jMKg6yv4I/mqdefault.jpg'">
+      </div>
+      <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+    </a>
+    <a class="vid-thumb" href="https://youtube.com/shorts/JzBYngyg31U" target="_blank">
+      <div class="aspect-9-16">
+        <img src="https://img.youtube.com/vi/JzBYngyg31U/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/JzBYngyg31U/mqdefault.jpg'">
+      </div>
+      <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+    </a>
+  </div>
+</section>
+
+<!-- PODCAST -->
+<section class="podcast" id="podcast">
+  <div class="podcast-inner">
+    <div class="podcast-cover">
+      <img src="images/podcast-cover.jpeg" alt="ללא הפסקה">
+    </div>
+    <div class="podcast-desc">
+      <div class="section-label">פודקאסט</div>
+      <h2 class="section-title">ללא הפסקה</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.6); margin-bottom:32px;">הפודקאסט העירוני הראשון בישראל — יוזמה, הפקה, תחקיר והגשה של דוברות עיריית תל אביב-יפו. פרקים על תרבות, קהילה, עירוניות ואנשים שעושים.</p>
+      <p>האזינו בכל הפלטפורמות:</p>
+    </div>
+    <div class="podcast-platforms">
+      <a class="platform-btn spotify" href="https://bit.ly/podlelo" target="_blank">
+        <span class="platform-icon">🎵</span>
+        <span class="platform-btn-text">Spotify<span>האזינו בספוטיפיי</span></span>
+        <span class="platform-arrow">←</span>
+      </a>
+      <a class="platform-btn apple" href="https://bit.ly/podleloapple" target="_blank">
+        <span class="platform-icon">🎧</span>
+        <span class="platform-btn-text">Apple Podcasts<span>האזינו באפל</span></span>
+        <span class="platform-arrow">←</span>
+      </a>
+      <a class="platform-btn youtube" href="https://bit.ly/4bqwLlq" target="_blank">
+        <span class="platform-icon">▶️</span>
+        <span class="platform-btn-text">YouTube<span>צפו ביוטיוב</span></span>
+        <span class="platform-arrow">←</span>
+      </a>
+      <a class="platform-btn all" href="https://bit.ly/podallplatforms" target="_blank">
+        <span class="platform-icon">🎙️</span>
+        <span class="platform-btn-text">כל הפלטפורמות<span>האזינו בכל מקום</span></span>
+        <span class="platform-arrow">←</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PODCAST GALLERY -->
+<section class="podcast-gallery" id="podcast-gallery">
+  <div class="section-label">גלריה</div>
+  <h2 class="section-title">פודקאסטים שליוויתי</h2>
+  <p class="section-sub"></p>
+
+  <div class="pgallery-track-wrap">
+    <div class="pgallery-track" id="pgalleryTrack">
+      <div class="pgallery-card"><img src="images/gallery-1.jpeg" alt="פודקאסט"></div>
+      <div class="pgallery-card"><img src="images/gallery-2.jpeg" alt="פודקאסט"></div>
+      <div class="pgallery-card"><img src="images/gallery-3.jpeg" alt="פודקאסט"></div>
+      <div class="pgallery-card"><img src="images/gallery-4.jpeg" alt="פודקאסט"></div>
+      <div class="pgallery-card"><img src="images/gallery-5.jpeg" alt="פודקאסט"></div>
+      <div class="pgallery-card"><img src="images/gallery-6.jpg" alt="פודקאסט"></div>
+    </div>
+  </div>
+
+  <div class="pgallery-nav">
+    <button class="pgallery-btn" onclick="pgMove(-1)">&#8250;</button>
+    <div class="pgallery-dots" id="pgalleryDots"></div>
+    <button class="pgallery-btn" onclick="pgMove(1)">&#8249;</button>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label" style="color: var(--coral-light);">צרו קשר</div>
+  <h2 class="section-title">בואו נעשה משהו ביחד</h2>
+  <p class="section-sub">מעניין אתכם לשמוע עוד? תשלחו הודעה ואחזור אליכם בהקדם.</p>
+
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:shanylevy13@gmail.com">
+      ✉️ shanylevy13@gmail.com
+    </a>
+    <a class="contact-link" href="tel:+972506666507">
+      📞 050-666-6507
+    </a>
+    <a class="contact-link" href="https://instagram.com/shanyponygrrl" target="_blank">
+      📸 @shanyponygrrl
+    </a>
+    <a class="contact-link" href="https://www.linkedin.com/in/shany-levy-6158933a/" target="_blank">
+      💼 LinkedIn
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>שני לוי ✦ פוני סטודיו</span>
+  <span>תוכן · שיווק · פודקאסטים · תל אביב</span>
+</footer>
+
+<script>
+  const pgTrack = document.getElementById('pgalleryTrack');
+  const pgDotsEl = document.getElementById('pgalleryDots');
+  const pgCards = pgTrack.querySelectorAll('.pgallery-card');
+  let pgCurrent = 0;
+
+  function pgVisible() { return window.innerWidth < 700 ? 2 : 4; }
+  function pgTotal() { return Math.ceil(pgCards.length / pgVisible()); }
+
+  function pgBuildDots() {
+    pgDotsEl.innerHTML = '';
+    for (let i = 0; i < pgTotal(); i++) {
+      const d = document.createElement('button');
+      d.className = 'pgallery-dot' + (i === pgCurrent ? ' active' : '');
+      d.onclick = () => pgGoTo(i);
+      pgDotsEl.appendChild(d);
+    }
+  }
+
+  function pgGoTo(i) {
+    pgCurrent = Math.max(0, Math.min(i, pgTotal() - 1));
+    const w = pgCards[0].offsetWidth + 20;
+    pgTrack.style.transform = `translateX(${pgCurrent * pgVisible() * w}px)`;
+    pgBuildDots();
+  }
+
+  function pgMove(dir) { pgGoTo(pgCurrent - dir); }
+
+  pgBuildDots();
+  window.addEventListener('resize', () => pgGoTo(0));
+</script>
+</body>
+</html>
