@@ -593,6 +593,29 @@
   .play-btn svg { width: 22px; height: 22px; fill: white; margin-right: -3px; }
   .vid-thumb:hover .play-btn { transform: translate(-50%, -50%) scale(1.12); background: #c45e56; }
 
+  .vid-role {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.0) 100%);
+    color: white;
+    padding: 40px 14px 14px;
+    font-family: var(--font-main);
+    font-size: 0.88rem;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: right;
+    direction: rtl;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+    letter-spacing: 0.01em;
+  }
+  .vid-thumb:hover .vid-role {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   @media (max-width: 900px) {
     .videos-landscape { grid-template-columns: 1fr; }
     .videos-portrait { grid-template-columns: repeat(2, 1fr); }
@@ -962,12 +985,14 @@
         <img src="https://img.youtube.com/vi/tnTdQP3TJdE/hqdefault.jpg" alt="וידאו" onerror="this.src='https://img.youtube.com/vi/tnTdQP3TJdE/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="vid-role">קריינות</div>
     </a>
     <a class="vid-thumb" href="https://youtu.be/0InzTjvAu9A" target="_blank">
       <div class="aspect-16-9">
         <img src="https://img.youtube.com/vi/0InzTjvAu9A/hqdefault.jpg" alt="וידאו" onerror="this.src='https://img.youtube.com/vi/0InzTjvAu9A/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="vid-role">הפקה, ליהוק, קריאטיב</div>
     </a>
   </div>
 
@@ -977,48 +1002,56 @@
         <img src="https://img.youtube.com/vi/whfRHepsxYk/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/whfRHepsxYk/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="vid-role">עריכה, הפקה, שיווק</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/b-UEi7eBZfs" target="_blank">
       <div class="aspect-9-16">
         <img src="https://img.youtube.com/vi/b-UEi7eBZfs/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/b-UEi7eBZfs/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="vid-role">הנחיה, מתוך פודקאסט ״ללא הפסקה״</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/d5jMKg6yv4I" target="_blank">
       <div class="aspect-9-16">
         <img src="https://img.youtube.com/vi/d5jMKg6yv4I/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/d5jMKg6yv4I/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="vid-role">הנחיה, מתוך פודקאסט ״ללא הפסקה״</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/JzBYngyg31U" target="_blank">
       <div class="aspect-9-16">
         <img src="https://img.youtube.com/vi/JzBYngyg31U/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/JzBYngyg31U/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="vid-role">הפקה, קריאטיב, ליהוק, ושיווק הפרויקט</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/uusf4lCHYXA" target="_blank">
       <div class="aspect-9-16">
         <img src="https://img.youtube.com/vi/uusf4lCHYXA/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/uusf4lCHYXA/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="vid-role">קריאטיב, צילום, הפקה, עריכה</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/yYLJlVMRPwQ" target="_blank">
       <div class="aspect-9-16">
         <img src="https://img.youtube.com/vi/yYLJlVMRPwQ/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/yYLJlVMRPwQ/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="vid-role">פרזנטורית</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/xD2YmiP6GL0" target="_blank">
       <div class="aspect-9-16">
         <img src="https://img.youtube.com/vi/xD2YmiP6GL0/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/xD2YmiP6GL0/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="vid-role">הנחיה, מתוך פודקאסט ״ללא הפסקה״</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/6C4Jv_asapk" target="_blank">
       <div class="aspect-9-16">
         <img src="https://img.youtube.com/vi/6C4Jv_asapk/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/6C4Jv_asapk/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="vid-role">הנחיה, מתוך פודקאסט ״ללא הפסקה״</div>
     </a>
     <a class="vid-thumb" href="https://www.instagram.com/reel/DT13UezDHeH/" target="_blank" style="background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);">
       <div class="aspect-9-16" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;">
@@ -1026,6 +1059,7 @@
         <span style="color:white;font-family:'Alef',sans-serif;font-weight:700;font-size:0.9rem;">צפו באינסטגרם</span>
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="vid-role">הנחיה, מתוך פודקאסט ״ללא הפסקה״</div>
     </a>
   </div>
 </section>
