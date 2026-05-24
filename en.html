@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>שני לוי | תוכן · שיווק · פודקאסטים</title>
-<link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+<title>Shany Levy | Content · Marketing · Podcasts</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --coral: #E03234;
@@ -14,7 +14,7 @@
     --mid: #6B5C5C;
     --light: #FDF5F6;
     --white: #FFFFFF;
-    --font-main: 'Alef', 'Helvetica Neue', Arial, sans-serif;
+    --font-main: 'Inter', 'Helvetica Neue', Arial, sans-serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,7 +29,7 @@
   /* NAV */
   nav {
     position: fixed;
-    top: 0; right: 0; left: 0;
+    top: 0; left: 0; right: 0;
     z-index: 100;
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(8px);
@@ -46,6 +46,12 @@
     font-weight: 700;
     color: var(--coral);
     letter-spacing: 0.02em;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
   }
 
   .nav-links {
@@ -95,7 +101,7 @@
     height: 580px;
     border-radius: 32px;
     overflow: hidden;
-    order: -1;
+    order: 1;
     box-shadow: 0 24px 64px rgba(217,107,98,0.18);
     position: relative;
   }
@@ -118,10 +124,8 @@
   .hero::before {
     content: '';
     position: absolute;
-    top: -120px;
-    left: -120px;
-    width: 480px;
-    height: 480px;
+    top: -120px; right: -120px;
+    width: 480px; height: 480px;
     background: radial-gradient(circle, rgba(217,107,98,0.12) 0%, transparent 70%);
     pointer-events: none;
   }
@@ -129,8 +133,7 @@
   .hero::after {
     content: '✦';
     position: absolute;
-    bottom: 80px;
-    left: 100px;
+    bottom: 80px; right: 100px;
     font-size: 4rem;
     color: rgba(217,107,98,0.08);
   }
@@ -272,7 +275,7 @@
     background: var(--coral-pale);
     border-radius: 16px;
     padding: 28px 24px;
-    border-right: 4px solid var(--coral);
+    border-left: 4px solid var(--coral);
   }
 
   .stat-number {
@@ -338,14 +341,14 @@
   .timeline::before {
     content: '';
     position: absolute;
-    right: 0;
+    left: 0;
     top: 0; bottom: 0;
     width: 2px;
     background: linear-gradient(to bottom, var(--coral), transparent);
   }
 
   .timeline-item {
-    padding-right: 36px;
+    padding-left: 36px;
     padding-bottom: 48px;
     position: relative;
   }
@@ -353,7 +356,7 @@
   .timeline-item::before {
     content: '';
     position: absolute;
-    right: -6px;
+    left: -6px;
     top: 6px;
     width: 14px;
     height: 14px;
@@ -394,7 +397,7 @@
 
   .timeline-desc li {
     margin-bottom: 6px;
-    padding-right: 12px;
+    padding-left: 12px;
     position: relative;
     list-style: none;
   }
@@ -402,7 +405,7 @@
   .timeline-desc li::before {
     content: '◆';
     position: absolute;
-    right: 0;
+    left: 0;
     color: var(--coral);
     font-size: 0.5rem;
     top: 7px;
@@ -416,7 +419,7 @@
     font-weight: 600;
     padding: 3px 10px;
     border-radius: 12px;
-    margin-right: 8px;
+    margin-left: 0;
     margin-top: 10px;
   }
 
@@ -447,6 +450,107 @@
     background: white;
   }
 
+  /* VIDEOS */
+  .videos { background: var(--light); }
+
+  .videos-landscape {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .videos-portrait {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .vid-thumb {
+    display: block;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+    background: #111;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .vid-thumb:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.18); }
+
+  .vid-thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.2s;
+  }
+
+  .vid-thumb:hover img { opacity: 0.85; }
+
+  .vid-thumb .aspect-16-9 { aspect-ratio: 16/9; }
+  .vid-thumb .aspect-9-16 { aspect-ratio: 9/16; }
+
+  .play-btn {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px; height: 56px;
+    background: var(--coral);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  .play-btn svg { width: 22px; height: 22px; fill: white; margin-left: 3px; }
+  .vid-thumb:hover .play-btn { transform: translate(-50%, -50%) scale(1.12); background: #c45e56; }
+
+  .vid-title {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.0) 100%);
+    color: white;
+    padding: 14px 14px 40px;
+    font-family: var(--font-main);
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+  .vid-thumb:hover .vid-title { opacity: 1; transform: translateY(0); }
+
+  .vid-role {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.0) 100%);
+    color: white;
+    padding: 40px 14px 14px;
+    font-family: var(--font-main);
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+    letter-spacing: 0.01em;
+  }
+  .vid-thumb:hover .vid-role { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .videos-landscape { grid-template-columns: 1fr; }
+    .videos-portrait { grid-template-columns: repeat(2, 1fr); }
+  }
+
   /* PODCAST */
   .podcast {
     background: var(--dark);
@@ -458,7 +562,7 @@
   .podcast::before {
     content: '';
     position: absolute;
-    top: -200px; left: -200px;
+    top: -200px; right: -200px;
     width: 600px; height: 600px;
     background: radial-gradient(circle, rgba(217,107,98,0.15) 0%, transparent 70%);
     pointer-events: none;
@@ -523,168 +627,44 @@
   }
 
   .platform-btn:hover {
-    transform: translateX(-4px);
+    transform: translateX(4px);
     background: rgba(255,255,255,0.12);
     border-color: rgba(255,255,255,0.25);
   }
 
-  .platform-icon {
-    width: 36px; height: 36px;
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    font-size: 1.1rem;
-  }
-
-  .platform-btn.spotify .platform-icon  { background: #1DB954; }
-  .platform-btn.apple   .platform-icon  { background: #fc3c44; }
-  .platform-btn.youtube .platform-icon  { background: #FF0000; }
-  .platform-btn.all     .platform-icon  { background: var(--coral); }
-
-  .platform-btn-text { display: flex; flex-direction: column; line-height: 1.2; }
-  .platform-btn-text span { font-size: 0.75rem; opacity: 0.5; font-weight: 400; margin-top: 2px; }
-
-  .platform-arrow { margin-right: auto; opacity: 0.3; font-size: 1.1rem; transition: opacity 0.2s, transform 0.2s; }
-  .platform-btn:hover .platform-arrow { opacity: 0.7; transform: translateX(-3px); }
-
-  /* VIDEOS */
-  .videos { background: var(--light); }
-
-  .videos-landscape {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 24px;
-  }
-
-  .videos-portrait {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-  }
-
-  .vid-thumb {
-    display: block;
-    position: relative;
-    border-radius: 16px;
-    overflow: hidden;
-    text-decoration: none;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.10);
-    background: #111;
-    transition: transform 0.25s, box-shadow 0.25s;
-  }
-
-  .vid-thumb:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.18); }
-
-  .vid-thumb img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.2s;
-  }
-
-  .vid-thumb:hover img { opacity: 0.85; }
-
-  .vid-thumb .aspect-16-9 { aspect-ratio: 16/9; }
-  .vid-thumb .aspect-9-16 { aspect-ratio: 9/16; }
-
-  .play-btn {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 56px; height: 56px;
-    background: var(--coral);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s, background 0.2s;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  }
-
-  .play-btn svg { width: 22px; height: 22px; fill: white; margin-right: -3px; }
-  .vid-thumb:hover .play-btn { transform: translate(-50%, -50%) scale(1.12); background: #c45e56; }
-
-  .vid-title {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.0) 100%);
-    color: white;
-    padding: 14px 14px 40px;
-    font-family: var(--font-main);
-    font-size: 1.05rem;
-    font-weight: 700;
-    line-height: 1.4;
-    text-align: right;
-    direction: rtl;
-    opacity: 0;
-    transform: translateY(-6px);
-    transition: opacity 0.3s, transform 0.3s;
-    pointer-events: none;
-  }
-  .vid-thumb:hover .vid-title {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .vid-role {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.0) 100%);
-    color: white;
-    padding: 40px 14px 14px;
-    font-family: var(--font-main);
-    font-size: 1.15rem;
-    font-weight: 700;
-    line-height: 1.5;
-    text-align: right;
-    direction: rtl;
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.3s, transform 0.3s;
-    pointer-events: none;
-    letter-spacing: 0.01em;
-  }
-  .vid-thumb:hover .vid-role {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  @media (max-width: 900px) {
-    .videos-landscape { grid-template-columns: 1fr; }
-    .videos-portrait { grid-template-columns: repeat(2, 1fr); }
-  }
+  .platform-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .platform-btn-text { display: flex; flex-direction: column; flex: 1; }
+  .platform-btn-text span { font-size: 0.78rem; font-weight: 400; opacity: 0.6; }
+  .platform-arrow { margin-left: auto; opacity: 0.3; font-size: 1.1rem; transition: opacity 0.2s, transform 0.2s; }
+  .platform-btn:hover .platform-arrow { opacity: 0.8; transform: translateX(3px); }
 
   /* PODCAST GALLERY */
   .podcast-gallery { background: var(--light); }
 
   .pgallery-track-wrap {
-    position: relative;
     overflow: hidden;
+    border-radius: 20px;
+    margin-bottom: 24px;
   }
 
   .pgallery-track {
     display: flex;
     gap: 20px;
-    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
-    will-change: transform;
+    transition: transform 0.4s ease;
   }
 
   .pgallery-card {
     flex: 0 0 calc(25% - 15px);
     border-radius: 16px;
     overflow: hidden;
-    aspect-ratio: 1/1;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.10);
-    background: #eee;
+    aspect-ratio: 4/3;
   }
 
   .pgallery-card img {
     width: 100%; height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.3s;
+    transition: transform 0.4s;
   }
 
   .pgallery-card:hover img { transform: scale(1.04); }
@@ -694,7 +674,6 @@
     justify-content: center;
     align-items: center;
     gap: 16px;
-    margin-top: 28px;
   }
 
   .pgallery-btn {
@@ -712,10 +691,7 @@
 
   .pgallery-btn:hover { background: #c42a2b; transform: scale(1.08); }
 
-  .pgallery-dots {
-    display: flex;
-    gap: 8px;
-  }
+  .pgallery-dots { display: flex; gap: 8px; }
 
   .pgallery-dot {
     width: 8px; height: 8px;
@@ -791,7 +767,8 @@
   @media (max-width: 900px) {
     nav { padding: 0 24px; }
     nav .nav-links { display: none; }
-    .hero { padding: 100px 32px 60px; }
+    .hero { padding: 100px 32px 60px; flex-direction: column; }
+    .hero-image { flex: none; width: 100%; height: 300px; order: 0; }
     section { padding: 64px 32px; }
     .about { grid-template-columns: 1fr; gap: 40px; }
     .services-grid { grid-template-columns: 1fr; }
@@ -804,184 +781,186 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">שני לוי ✦ פוני</div>
-  <ul class="nav-links">
-    <li><a href="#about">אודות</a></li>
-    <li><a href="#services">שירותים</a></li>
-    <li><a href="#experience">ניסיון</a></li>
-    <li><a href="#videos">וידאו</a></li>
-    <li><a href="#podcast">פודקאסט</a></li>
-    <li><a href="#contact">צור קשר</a></li>
-  </ul>
-  <a class="lang-switch" href="en.html">🇬🇧 English</a>
+  <div class="nav-logo">Shany Levy ✦ Pony</div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#videos">Work</a></li>
+      <li><a href="#podcast">Podcast</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="lang-switch" href="index.html">🇮🇱 עברית</a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-image">
-    <img src="images/hero.jpg" alt="שני לוי">
-  </div>
   <div class="hero-content">
-    <div class="hero-tag">פוני סטודיו ✦ תוכן ושיווק</div>
-    <h1>שני <span>לוי</span></h1>
+    <div class="hero-tag">Pony Studio ✦ Content & Marketing</div>
+    <h1>Shany <span>Levy</span></h1>
     <div class="hero-studio">Content · Marketing · Podcasts</div>
     <div class="hero-divider">
       <span>◆</span><hr><span>◆</span><hr><span>◆</span>
     </div>
     <p>
-      היוש! נעים להכיר, אני שני לוי או יותר נכון שני ״פוני״. יש לי מעל 10 שנים של תוכן, שיווק ודוברות במגזר הציבורי והחברתי. מייסדת הפודקאסט העירוני הראשון בישראל. עוזרת לעסקים ולארגונים לדבר בקול אמיתי - ולגרום לזה לעבוד. אני יכולה לעזור לכם לשווק, לפרסם, לערוך וידאו, לדבר החוצה את העסק שלכם ובעיקר - לתת קול אמיתי, אותנטי וכנה ברשת. בואו נדבר!
+      Hey! I'm Shany Levy, also known as Shany "Pony." I have over 10 years of experience in content, marketing, and communications in the public and social sector. Founder of Israel's first municipal podcast. I help businesses and organizations find their authentic voice — and make it work. Let's talk!
     </p>
     <div class="hero-cta">
-      <a href="#contact" class="btn-primary">דברו איתי</a>
-      <a href="#services" class="btn-secondary">מה אני עושה</a>
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <a href="#services" class="btn-secondary">What I Do</a>
     </div>
+  </div>
+  <div class="hero-image">
+    <img src="images/hero.jpg" alt="Shany Levy">
   </div>
 </section>
 
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-text">
-    <div class="section-label">אודות</div>
-    <h2 class="section-title">חיה ונושמת תוכן</h2>
+    <div class="section-label">About</div>
+    <h2 class="section-title">Living & Breathing Content</h2>
     <p>
-      שמי שני לוי, בת 35 מתל אביב-יפו. כ-8 שנים עבדתי בדוברות עיריית תל אביב-יפו, שם הקמתי את הפודקאסט העירוני הראשון בישראל וניהלתי ופיתחתי את תחום הפודקאסטים בדוברות. בנוסף גם ניהלתי את כל נושא השיווק לצעירי העיר.
+      I'm Shany Levy, 35, from Tel Aviv-Jaffa. For about 8 years I worked at the Tel Aviv-Jaffa Municipality Spokesperson's Office, where I founded Israel's first municipal podcast and led the development of the podcasting department. I also managed all digital marketing for the city's youth division.
     </p>
     <p>
-      כיום, אני מנהלת את <strong>פוני סטודיו</strong> - סטודיו ליצירת תוכן, ייעוץ שיווקי והקמת פודקאסטים לעסקים ולארגונים חברתיים. אני מלווה בעלות ובעלי עסקים שיוכלו למצוא את עצמן ברשתות החברתיות ולא להרגיש שהעולם הזה שטחי וחסר משמעות.
+      Today I run <strong>Pony Studio</strong> — a content creation, marketing consulting, and podcast production studio for businesses and social organizations. I help business owners show up online authentically, without feeling like they're being fake.
     </p>
     <p>
-      בעלת תואר ראשון בתקשורת, הסמכות גוגל ומטא, וניסיון של מעל עשור בכל מה שנוגע לפרסום ושיווק דיגיטלי.
+      BA in Communications, Google & Meta certified, with over a decade of hands-on experience in digital marketing and advertising.
     </p>
   </div>
   <div class="about-stats">
     <div class="stat-card">
       <div class="stat-number">10+</div>
-      <div class="stat-label">שנות ניסיון בשיווק דיגיטלי</div>
+      <div class="stat-label">Years of digital marketing experience</div>
     </div>
     <div class="stat-card">
       <div class="stat-number">1,000+</div>
-      <div class="stat-label">משתתפים באירועי "טיוטות מהסמארטפון"</div>
+      <div class="stat-label">Participants in "Drafts from the Smartphone" events</div>
     </div>
     <div class="stat-card">
       <div class="stat-number">#1</div>
-      <div class="stat-label">פודקאסט עירוני ראשון בישראל</div>
+      <div class="stat-label">First municipal podcast in Israel</div>
     </div>
     <div class="stat-card">
       <div class="stat-number">2021</div>
-      <div class="stat-label">מצטיינת ראש העיר לדיגיטל</div>
+      <div class="stat-label">Mayor's Digital Excellence Award</div>
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
 <section class="services" id="services">
-  <div class="section-label">שירותים</div>
-  <h2 class="section-title">מה פוני סטודיו עושה</h2>
-  <p class="section-sub">שילוב של הדרכה, ליווי ויעוץ יחד עם ביצוע ברמה הכי גבוהה - לא רק מייעצים, עושים.</p>
+  <div class="section-label">Services</div>
+  <h2 class="section-title">What Pony Studio Does</h2>
+  <p class="section-sub">Strategy, guidance, and hands-on execution at the highest level — we don't just advise, we do.</p>
 
   <div class="services-grid">
     <div class="service-card">
       <span class="service-icon">🎙️</span>
-      <h3>פודקאסטים מא׳ ועד ת׳</h3>
-      <p>הקמה, ניהול ותחזוק של פודקאסטים לארגונים וחברות - תחקיר, הפקה, הגשה, ליווי, הקלטה. ניסיון מוכח מדוברות עיריית תל אביב.</p>
+      <h3>Podcast Production — End to End</h3>
+      <p>Launching, managing, and maintaining podcasts for organizations and companies — research, production, hosting, coaching, recording. Proven experience from the Tel Aviv Municipality.</p>
     </div>
     <div class="service-card">
       <span class="service-icon">📱</span>
-      <h3>ניהול סושיאל מדיה</h3>
-      <p>יצירת תוכן דיגיטלי לפייסבוק, אינסטגרם, טיקטוק, יוטיוב וניוזלטר. שיווק שמדבר בצורה אמיתית ומביא תוצאות.</p>
+      <h3>Social Media Management</h3>
+      <p>Digital content creation for Facebook, Instagram, TikTok, YouTube, and newsletters. Marketing that speaks authentically and delivers real results.</p>
     </div>
     <div class="service-card">
       <span class="service-icon">🎯</span>
-      <h3>ייעוץ וליווי דיגיטלי</h3>
-      <p>ליווי אישי לעסקים קטנים ובינוניים עם דגש על המגזר הציבורי-חברתי-תרבותי. עוזרת לכם לדבר על העסק שלכם בצורה אמיתית שעושה את זה.</p>
+      <h3>Digital Strategy & Consulting</h3>
+      <p>Personal guidance for small and medium businesses, with a focus on the public, social, and cultural sectors. Helping you talk about your business in a way that actually resonates.</p>
     </div>
     <div class="service-card">
       <span class="service-icon">✍️</span>
-      <h3>יצירת תוכן ואסטרטגיה</h3>
-      <p>בניית אסטרטגיית תוכן, כתיבה, עריכה ופרסום. במילים פשוטות: בואו נבנה גאנט תוכן ביחד! יש לי רעיונות ממש טובים.</p>
+      <h3>Content Creation & Strategy</h3>
+      <p>Building content strategies, writing, editing, and publishing. Simply put: let's build a content calendar together — I have some really good ideas.</p>
     </div>
     <div class="service-card">
       <span class="service-icon">🎤</span>
-      <h3>הדרכה שיווקית</h3>
-      <p>הכשרה מעשית להתמודדות מול מצלמה, שיווק עצמי ברשתות ויצירת נוכחות דיגיטלית מנצחת לבעלי עסקים.</p>
+      <h3>Marketing Workshops & Training</h3>
+      <p>Hands-on training in on-camera presence, personal branding on social media, and building a winning digital presence for business owners.</p>
     </div>
     <div class="service-card">
       <span class="service-icon">🎪</span>
-      <h3>הפקת תוכן</h3>
-      <p>יוזמה, הפקה וליהוק - של כל תוכן שתצטרכו - מרילסים ועד קמפיינים גדולים.</p>
+      <h3>Content Production</h3>
+      <p>Ideation, production, and casting — for whatever content you need, from reels to full-scale campaigns.</p>
     </div>
   </div>
 </section>
 
 <!-- STATEMENT -->
 <section style="background: var(--dark); padding: 100px 80px; text-align: center;">
-  <h2 style="font-family: 'Alef', sans-serif; font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 800; color: white; line-height: 1.2; margin-bottom: 20px;">אני הדבר הכי טוב שיכל לקרות לעסק שלכם</h2>
-  <p style="font-family: 'Alef', sans-serif; font-size: 1.3rem; color: var(--coral-light); font-weight: 400;">סתם. כאילו לא סתם.</p>
+  <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 800; color: white; line-height: 1.2; margin-bottom: 20px;">I'm the best thing that could happen to your business.</h2>
+  <p style="font-family: 'Inter', sans-serif; font-size: 1.3rem; color: var(--coral-light); font-weight: 400;">Just kidding. Kind of.</p>
 </section>
 
 <!-- EXPERIENCE -->
 <section class="experience" id="experience">
-  <div class="section-label">הניסיון שלי</div>
-  <h2 class="section-title">הדרך עד כאן</h2>
-  <p class="section-sub">מהצבא, דרך ברלין, לפודקאסט הראשון של עיריית תל אביב.</p>
+  <div class="section-label">Experience</div>
+  <h2 class="section-title">The Journey So Far</h2>
+  <p class="section-sub">From the military, through Berlin, to founding Israel's first municipal podcast.</p>
 
   <div class="timeline">
 
     <div class="timeline-item">
-      <div class="timeline-date">2022 – היום</div>
-      <div class="timeline-role">רפרנטית קהילה, תרבות וספורט ומנהלת תחום פודקאסטים</div>
-      <div class="timeline-org">דוברות עיריית תל אביב-יפו</div>
+      <div class="timeline-date">2022 – Present</div>
+      <div class="timeline-role">Community, Culture & Sports Officer · Head of Podcasting</div>
+      <div class="timeline-org">Tel Aviv-Jaffa Municipality Spokesperson's Office</div>
       <ul class="timeline-desc">
-        <li>יצירת תוכן דיגיטלי בכל ערוצי העירייה - פייסבוק, אינסטגרם, טיקטוק, יוטיוב, ניוזלטר ועוד</li>
-        <li>יוזמת, מפיקה ומגישה את "ללא הפסקה" - הפודקאסט העירוני הראשון בישראל</li>
-        <li>הפקת אירועי הסברה בשלל תחומים אורבניים</li>
-        <li>ניהול תחום הפודקאסטים בדוברות העירייה</li>
+        <li>Digital content creation across all city channels — Facebook, Instagram, TikTok, YouTube, newsletter and more</li>
+        <li>Founder, producer, and host of "Non-Stop" — Israel's first municipal podcast</li>
+        <li>Production of public awareness events across urban topics</li>
+        <li>Managing the podcasting department at the city's communications office</li>
       </ul>
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-date">2022 – היום</div>
-      <div class="timeline-role">מייסדת ומנהלת פוני סטודיו | יועצת תוכן שיווקי (פרילנס)</div>
-      <div class="timeline-org">פוני סטודיו</div>
+      <div class="timeline-date">2022 – Present</div>
+      <div class="timeline-role">Founder & Director of Pony Studio | Marketing Consultant (Freelance)</div>
+      <div class="timeline-org">Pony Studio</div>
       <ul class="timeline-desc">
-        <li>ייעוץ וליווי שיווקי לעסקים קטנים: פסטיבל קולנוע IFFF, קליניקת מיילדות, מכון התרבות הפולני, חנוך פיבן, זומו המוזיאון שבדרך</li>
-        <li>הקמה וניהול פודקאסטים לארגונים ומערכות גדולות</li>
+        <li>Marketing consulting for small businesses: IFFF Film Festival, a midwifery clinic, the Polish Cultural Institute, Hanoch Piven, Zumo Museum on the Way</li>
+        <li>Podcast launch and management for organizations and large institutions</li>
       </ul>
     </div>
 
     <div class="timeline-item">
       <div class="timeline-date">2019 – 2022</div>
-      <div class="timeline-role">מנהלת שיווק יחידת הצעירים</div>
-      <div class="timeline-org">עיריית תל אביב-יפו</div>
+      <div class="timeline-role">Youth Division Marketing Manager</div>
+      <div class="timeline-org">Tel Aviv-Jaffa Municipality</div>
       <ul class="timeline-desc">
-        <li>אחראית לכל תוצרי הדיגיטל והפרינט של יחידת הצעירים וניהול מזא"ה 9</li>
-        <li>ייזום קמפיין פרינט ב-80 תחנות אוטובוס - הקמפיין העירוני הראשון בעברית רב-מגדרית</li>
-        <li>ייזום הפודקאסט הרשמי של יחידת הצעירים - הפודקאסט המוניציפלי הראשון בישראל</li>
-        <li>ניהול צוות תוכן, הדרכה וליווי עובדים בתחומי שיווק ודיגיטל</li>
+        <li>Responsible for all digital and print outputs of the Youth Division and management of Maza 9</li>
+        <li>Initiated a print campaign across 80 bus stops — the first municipal campaign in gender-inclusive Hebrew</li>
+        <li>Initiated the Youth Division's official podcast — the first municipal podcast in Israel</li>
+        <li>Managed a content team, trained and mentored staff in marketing and digital</li>
       </ul>
-      <span class="badge">🏆 מצטיינת ראש העיר לדיגיטל 2021</span>
+      <span class="badge">🏆 Mayor's Digital Excellence Award 2021</span>
     </div>
 
     <div class="timeline-item">
       <div class="timeline-date">2017 – 2020</div>
-      <div class="timeline-role">מייסדת ומנהלת "טיוטות מהסמארטפון"</div>
-      <div class="timeline-org">יוזמה עצמאית</div>
+      <div class="timeline-role">Founder & Director — "Drafts from the Smartphone"</div>
+      <div class="timeline-org">Independent Initiative</div>
       <ul class="timeline-desc">
-        <li>ייזום וניהול סדרת אירועים בהשתתפות 1,000+ איש, כולל אירוע של 300 משתתפים בבית אריאלה</li>
-        <li>ניהול קהילה של מעל 1,300 משתתפים</li>
-        <li>פיתוח תוכן, מיון ועריכת טקסטים, הפקת אירועים, שיווק וניהול קהילה</li>
+        <li>Initiated and managed an event series with 1,000+ attendees, including a 300-person event at Beit Ariela</li>
+        <li>Managed a community of over 1,300 members</li>
+        <li>Content development, text editing, event production, marketing, and community management</li>
       </ul>
     </div>
 
     <div class="timeline-item">
       <div class="timeline-date">2010 – 2015</div>
-      <div class="timeline-role">קניינית רכש של חיל הים</div>
-      <div class="timeline-org">שגרירות ישראל בברלין, גרמניה</div>
+      <div class="timeline-role">Navy Procurement Officer</div>
+      <div class="timeline-org">Israeli Embassy, Berlin, Germany</div>
       <ul class="timeline-desc">
-        <li>רכש ציוד ביטחוני עבור חיל הים, עבודה מול חברות בגרמניה ואירופה</li>
-        <li>ניהול תקציבים, משא ומתן באנגלית וגרמנית, הקמת מכרזים לספקים</li>
+        <li>Procurement of military equipment for the Israeli Navy, working with German and European companies</li>
+        <li>Budget management, negotiations in English and German, supplier tendering</li>
       </ul>
-      <span class="badge">🏅 מצטיינת מטה חיל הים 2010</span>
+      <span class="badge">🏅 Navy HQ Excellence Award 2010</span>
     </div>
 
   </div>
@@ -989,148 +968,148 @@
 
 <!-- SKILLS -->
 <section class="skills" id="skills">
-  <div class="section-label">כישורים</div>
-  <h2 class="section-title">בקיצור, אני עושה מלא דברים:</h2>
+  <div class="section-label">Skills</div>
+  <h2 class="section-title">In Short, I Do a Lot of Things:</h2>
   <p class="section-sub"></p>
 
   <div class="skills-grid">
-    <div class="skill-pill">אסטרטגיית תוכן</div>
-    <div class="skill-pill">ניהול סושיאל מדיה</div>
-    <div class="skill-pill">הפקת פודקאסטים</div>
-    <div class="skill-pill">הפקת תוכן</div>
-    <div class="skill-pill">פרסום במטא</div>
-    <div class="skill-pill">כתיבה שיווקית</div>
-    <div class="skill-pill">הפקת אירועים</div>
-    <div class="skill-pill">הדרכה וליווי</div>
-    <div class="skill-pill">ניהול קהילות</div>
-    <div class="skill-pill">דוברות ויח"צ</div>
-    <div class="skill-pill">עברית · אנגלית · גרמנית</div>
-    <div class="skill-pill">חשיבה יצירתית</div>
+    <div class="skill-pill">Content Strategy</div>
+    <div class="skill-pill">Social Media Management</div>
+    <div class="skill-pill">Podcast Production</div>
+    <div class="skill-pill">Content Production</div>
+    <div class="skill-pill">Meta Advertising</div>
+    <div class="skill-pill">Copywriting</div>
+    <div class="skill-pill">Event Production</div>
+    <div class="skill-pill">Training & Mentoring</div>
+    <div class="skill-pill">Community Management</div>
+    <div class="skill-pill">PR & Communications</div>
+    <div class="skill-pill">Hebrew · English · German</div>
+    <div class="skill-pill">Creative Thinking</div>
   </div>
 </section>
 
 <!-- VIDEOS -->
 <section class="videos" id="videos">
-  <div class="section-label">תוכן</div>
-  <h2 class="section-title">דברים שעשיתי</h2>
-  <p class="section-sub">תוכן שיצרתי עבור לקוחות וגופים שונים</p>
+  <div class="section-label">Work</div>
+  <h2 class="section-title">Things I've Made</h2>
+  <p class="section-sub">Content I created for clients and organizations</p>
 
   <div class="videos-landscape">
     <a class="vid-thumb" href="https://youtu.be/tnTdQP3TJdE" target="_blank">
       <div class="aspect-16-9">
-        <img src="https://img.youtube.com/vi/tnTdQP3TJdE/hqdefault.jpg" alt="וידאו" onerror="this.src='https://img.youtube.com/vi/tnTdQP3TJdE/mqdefault.jpg'">
+        <img src="https://img.youtube.com/vi/tnTdQP3TJdE/hqdefault.jpg" alt="Video" onerror="this.src='https://img.youtube.com/vi/tnTdQP3TJdE/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="vid-title">סרטון תדמית עבור מנהל שירותים חברתיים בעריית תל אביב-יפו</div>
-      <div class="vid-role">קריינות</div>
+      <div class="vid-title">Brand video for the Director of Social Services, Tel Aviv-Jaffa Municipality</div>
+      <div class="vid-role">Voiceover</div>
     </a>
     <a class="vid-thumb" href="https://youtu.be/0InzTjvAu9A" target="_blank">
       <div class="aspect-16-9">
-        <img src="https://img.youtube.com/vi/0InzTjvAu9A/hqdefault.jpg" alt="וידאו" onerror="this.src='https://img.youtube.com/vi/0InzTjvAu9A/mqdefault.jpg'">
+        <img src="https://img.youtube.com/vi/0InzTjvAu9A/hqdefault.jpg" alt="Video" onerror="this.src='https://img.youtube.com/vi/0InzTjvAu9A/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="vid-title">סרטון הסברה שהוצג על בימת האו״ם</div>
-      <div class="vid-role">הפקה, ליהוק, קריאטיב</div>
+      <div class="vid-title">Awareness video presented at the UN</div>
+      <div class="vid-role">Production, Casting, Creative</div>
     </a>
   </div>
 
   <div class="videos-portrait">
     <a class="vid-thumb" href="https://youtube.com/shorts/whfRHepsxYk" target="_blank">
       <div class="aspect-9-16">
-        <img src="https://img.youtube.com/vi/whfRHepsxYk/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/whfRHepsxYk/mqdefault.jpg'">
+        <img src="https://img.youtube.com/vi/whfRHepsxYk/hqdefault.jpg" alt="Short" onerror="this.src='https://img.youtube.com/vi/whfRHepsxYk/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="vid-title">סרטון הסברה עבור התוכנית האסטרטגית של תל אביב-יפו</div>
-      <div class="vid-role">עריכה, הפקה, שיווק</div>
+      <div class="vid-title">Awareness video for Tel Aviv-Jaffa's Strategic Plan</div>
+      <div class="vid-role">Editing, Production, Marketing</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/b-UEi7eBZfs" target="_blank">
       <div class="aspect-9-16">
-        <img src="https://img.youtube.com/vi/b-UEi7eBZfs/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/b-UEi7eBZfs/mqdefault.jpg'">
+        <img src="https://img.youtube.com/vi/b-UEi7eBZfs/hqdefault.jpg" alt="Short" onerror="this.src='https://img.youtube.com/vi/b-UEi7eBZfs/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="vid-title">רותי ברודו, מתוך הפודקאסט ״ללא הפסקה״</div>
-      <div class="vid-role">הנחיה</div>
+      <div class="vid-title">Ruti Brudo, from the "Non-Stop" Podcast</div>
+      <div class="vid-role">Host</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/d5jMKg6yv4I" target="_blank">
       <div class="aspect-9-16">
-        <img src="https://img.youtube.com/vi/d5jMKg6yv4I/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/d5jMKg6yv4I/mqdefault.jpg'">
+        <img src="https://img.youtube.com/vi/d5jMKg6yv4I/hqdefault.jpg" alt="Short" onerror="this.src='https://img.youtube.com/vi/d5jMKg6yv4I/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="vid-title">ליאורה ריבלין, מתוך הפודקאסט ״ללא הפסקה״</div>
-      <div class="vid-role">הנחיה</div>
+      <div class="vid-title">Liora Rivlin, from the "Non-Stop" Podcast</div>
+      <div class="vid-role">Host</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/JzBYngyg31U" target="_blank">
       <div class="aspect-9-16">
-        <img src="https://img.youtube.com/vi/JzBYngyg31U/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/JzBYngyg31U/mqdefault.jpg'">
+        <img src="https://img.youtube.com/vi/JzBYngyg31U/hqdefault.jpg" alt="Short" onerror="this.src='https://img.youtube.com/vi/JzBYngyg31U/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="vid-title">סרטון בנושא השפעת המלחמה על צעירי העיר</div>
-      <div class="vid-role">הפקה, קריאטיב, ליהוק, ושיווק הפרויקט</div>
+      <div class="vid-title">Video on the war's impact on the city's youth</div>
+      <div class="vid-role">Production, Creative, Casting & Marketing</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/uusf4lCHYXA" target="_blank">
       <div class="aspect-9-16">
-        <img src="https://img.youtube.com/vi/uusf4lCHYXA/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/uusf4lCHYXA/mqdefault.jpg'">
+        <img src="https://img.youtube.com/vi/uusf4lCHYXA/hqdefault.jpg" alt="Short" onerror="this.src='https://img.youtube.com/vi/uusf4lCHYXA/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="vid-title">סרטון תדמית לקפה ״קובל״ בתאילנד</div>
-      <div class="vid-role">קריאטיב, צילום, הפקה, עריכה</div>
+      <div class="vid-title">Brand video for "Kubal" Café, Thailand</div>
+      <div class="vid-role">Creative, Filming, Production, Editing</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/yYLJlVMRPwQ" target="_blank">
       <div class="aspect-9-16">
-        <img src="https://img.youtube.com/vi/yYLJlVMRPwQ/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/yYLJlVMRPwQ/mqdefault.jpg'">
+        <img src="https://img.youtube.com/vi/yYLJlVMRPwQ/hqdefault.jpg" alt="Short" onerror="this.src='https://img.youtube.com/vi/yYLJlVMRPwQ/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="vid-title">סרטון הסברה עריית תל אביב</div>
-      <div class="vid-role">פרזנטורית</div>
+      <div class="vid-title">Awareness video for Tel Aviv Municipality</div>
+      <div class="vid-role">Presenter</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/xD2YmiP6GL0" target="_blank">
       <div class="aspect-9-16">
-        <img src="https://img.youtube.com/vi/xD2YmiP6GL0/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/xD2YmiP6GL0/mqdefault.jpg'">
+        <img src="https://img.youtube.com/vi/xD2YmiP6GL0/hqdefault.jpg" alt="Short" onerror="this.src='https://img.youtube.com/vi/xD2YmiP6GL0/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="vid-title">אבשלום קור, מתוך הפודקאסט ״ללא הפסקה״</div>
-      <div class="vid-role">הנחיה</div>
+      <div class="vid-title">Avshalom Kor, from the "Non-Stop" Podcast</div>
+      <div class="vid-role">Host</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/6C4Jv_asapk" target="_blank">
       <div class="aspect-9-16">
-        <img src="https://img.youtube.com/vi/6C4Jv_asapk/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/6C4Jv_asapk/mqdefault.jpg'">
+        <img src="https://img.youtube.com/vi/6C4Jv_asapk/hqdefault.jpg" alt="Short" onerror="this.src='https://img.youtube.com/vi/6C4Jv_asapk/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="vid-title">אייל שני, מתוך הפודקאסט ״ללא הפסקה״</div>
-      <div class="vid-role">הנחיה</div>
+      <div class="vid-title">Eyal Shani, from the "Non-Stop" Podcast</div>
+      <div class="vid-role">Host</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/fKg__QOfu0M" target="_blank">
       <div class="aspect-9-16">
-        <img src="https://img.youtube.com/vi/fKg__QOfu0M/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/fKg__QOfu0M/mqdefault.jpg'">
+        <img src="https://img.youtube.com/vi/fKg__QOfu0M/hqdefault.jpg" alt="Short" onerror="this.src='https://img.youtube.com/vi/fKg__QOfu0M/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="vid-title">ערב פודקאסט לייב בנושא צעירים בזמן המלחמה</div>
-      <div class="vid-role">הנחיה לייב</div>
+      <div class="vid-title">Live podcast evening — Youth in Wartime</div>
+      <div class="vid-role">Host (Live)</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/yW6y5Fr0fSo" target="_blank">
       <div class="aspect-9-16">
-        <img src="https://img.youtube.com/vi/yW6y5Fr0fSo/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/yW6y5Fr0fSo/mqdefault.jpg'">
+        <img src="https://img.youtube.com/vi/yW6y5Fr0fSo/hqdefault.jpg" alt="Short" onerror="this.src='https://img.youtube.com/vi/yW6y5Fr0fSo/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="vid-title">סרטון הרשמה להגרלת דיור בר השגה</div>
-      <div class="vid-role">משחק</div>
+      <div class="vid-title">Registration video for affordable housing lottery</div>
+      <div class="vid-role">Acting</div>
     </a>
     <a class="vid-thumb" href="https://youtube.com/shorts/h6YPxI2UDek" target="_blank">
       <div class="aspect-9-16">
-        <img src="https://img.youtube.com/vi/h6YPxI2UDek/hqdefault.jpg" alt="שורט" onerror="this.src='https://img.youtube.com/vi/h6YPxI2UDek/mqdefault.jpg'">
+        <img src="https://img.youtube.com/vi/h6YPxI2UDek/hqdefault.jpg" alt="Short" onerror="this.src='https://img.youtube.com/vi/h6YPxI2UDek/mqdefault.jpg'">
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="vid-title">פרסומת לאירוע אומנות ענק בנמל יפו</div>
-      <div class="vid-role">הפקה</div>
+      <div class="vid-title">Ad for a major art event at Jaffa Port</div>
+      <div class="vid-role">Production</div>
     </a>
     <a class="vid-thumb" href="https://www.instagram.com/reel/DT13UezDHeH/" target="_blank" style="background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);">
       <div class="aspect-9-16" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;">
         <svg viewBox="0 0 24 24" style="width:48px;height:48px;fill:white;opacity:0.9"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        <span style="color:white;font-family:'Alef',sans-serif;font-weight:700;font-size:0.9rem;">צפו באינסטגרם</span>
+        <span style="color:white;font-family:'Inter',sans-serif;font-weight:700;font-size:0.9rem;">Watch on Instagram</span>
       </div>
       <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="vid-title">פודקאסט ״ללא הפסקה״</div>
-      <div class="vid-role">הנחיה</div>
+      <div class="vid-title">"Non-Stop" Podcast</div>
+      <div class="vid-role">Host</div>
     </a>
   </div>
 </section>
@@ -1139,34 +1118,34 @@
 <section class="podcast" id="podcast">
   <div class="podcast-inner">
     <div class="podcast-cover">
-      <img src="images/podcast-cover.jpeg" alt="ללא הפסקה">
+      <img src="images/podcast-cover.jpeg" alt="Non-Stop Podcast">
     </div>
     <div class="podcast-desc">
-      <div class="section-label">פודקאסט</div>
-      <h2 class="section-title">ללא הפסקה</h2>
-      <p class="section-sub" style="color:rgba(255,255,255,0.6); margin-bottom:32px;">הפודקאסט העירוני הראשון בישראל - יוזמה, הפקה, תחקיר והגשה של דוברות עיריית תל אביב-יפו. פרקים על תרבות, קהילה, עירוניות ואנשים שעושים.</p>
-      <p>האזינו בכל הפלטפורמות:</p>
+      <div class="section-label">Podcast</div>
+      <h2 class="section-title">Non-Stop</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.6); margin-bottom:32px;">Israel's first municipal podcast — conceived, produced, researched, and hosted by the Tel Aviv-Jaffa Municipality Spokesperson's Office. Episodes on culture, community, urban life, and the people who make things happen.</p>
+      <p>Listen on all platforms:</p>
     </div>
     <div class="podcast-platforms">
       <a class="platform-btn spotify" href="https://bit.ly/podlelo" target="_blank">
         <span class="platform-icon">🎵</span>
-        <span class="platform-btn-text">Spotify<span>האזינו בספוטיפיי</span></span>
-        <span class="platform-arrow">←</span>
+        <span class="platform-btn-text">Spotify<span>Listen on Spotify</span></span>
+        <span class="platform-arrow">→</span>
       </a>
       <a class="platform-btn apple" href="https://bit.ly/podleloapple" target="_blank">
         <span class="platform-icon">🎧</span>
-        <span class="platform-btn-text">Apple Podcasts<span>האזינו באפל</span></span>
-        <span class="platform-arrow">←</span>
+        <span class="platform-btn-text">Apple Podcasts<span>Listen on Apple</span></span>
+        <span class="platform-arrow">→</span>
       </a>
       <a class="platform-btn youtube" href="https://bit.ly/4bqwLlq" target="_blank">
         <span class="platform-icon">▶️</span>
-        <span class="platform-btn-text">YouTube<span>צפו ביוטיוב</span></span>
-        <span class="platform-arrow">←</span>
+        <span class="platform-btn-text">YouTube<span>Watch on YouTube</span></span>
+        <span class="platform-arrow">→</span>
       </a>
       <a class="platform-btn all" href="https://bit.ly/podallplatforms" target="_blank">
         <span class="platform-icon">🎙️</span>
-        <span class="platform-btn-text">כל הפלטפורמות<span>האזינו בכל מקום</span></span>
-        <span class="platform-arrow">←</span>
+        <span class="platform-btn-text">All Platforms<span>Listen anywhere</span></span>
+        <span class="platform-arrow">→</span>
       </a>
     </div>
   </div>
@@ -1174,25 +1153,25 @@
 
 <!-- PODCAST GALLERY -->
 <section class="podcast-gallery" id="podcast-gallery">
-  <div class="section-label">גלריה</div>
-  <h2 class="section-title">פודקאסטים שליוויתי</h2>
+  <div class="section-label">Gallery</div>
+  <h2 class="section-title">Podcasts I've Produced</h2>
   <p class="section-sub"></p>
 
   <div class="pgallery-track-wrap">
     <div class="pgallery-track" id="pgalleryTrack">
-      <div class="pgallery-card"><img src="images/gallery-1.jpeg" alt="פודקאסט"></div>
-      <div class="pgallery-card"><img src="images/gallery-2.jpeg" alt="פודקאסט"></div>
-      <div class="pgallery-card"><img src="images/gallery-3.jpeg" alt="פודקאסט"></div>
-      <div class="pgallery-card"><img src="images/gallery-4.jpeg" alt="פודקאסט"></div>
-      <div class="pgallery-card"><img src="images/gallery-5.jpeg" alt="פודקאסט"></div>
-      <div class="pgallery-card"><img src="images/gallery-6.jpg" alt="פודקאסט"></div>
+      <div class="pgallery-card"><img src="images/gallery-1.jpeg" alt="Podcast"></div>
+      <div class="pgallery-card"><img src="images/gallery-2.jpeg" alt="Podcast"></div>
+      <div class="pgallery-card"><img src="images/gallery-3.jpeg" alt="Podcast"></div>
+      <div class="pgallery-card"><img src="images/gallery-4.jpeg" alt="Podcast"></div>
+      <div class="pgallery-card"><img src="images/gallery-5.jpeg" alt="Podcast"></div>
+      <div class="pgallery-card"><img src="images/gallery-6.jpg" alt="Podcast"></div>
     </div>
   </div>
 
   <div class="pgallery-nav">
-    <button class="pgallery-btn" onclick="pgMove(-1)">&#8250;</button>
+    <button class="pgallery-btn" onclick="pgMove(-1)">&#8249;</button>
     <div class="pgallery-dots" id="pgalleryDots"></div>
-    <button class="pgallery-btn" onclick="pgMove(1)">&#8249;</button>
+    <button class="pgallery-btn" onclick="pgMove(1)">&#8250;</button>
   </div>
 </section>
 
@@ -1200,24 +1179,24 @@
 <section style="background: var(--coral); padding: 72px 80px; text-align: center;">
   <div style="max-width: 720px; margin: 0 auto;">
     <div style="font-size: 2rem; margin-bottom: 16px;">🎬</div>
-    <h2 style="font-family: 'Alef', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; color: white; margin-bottom: 20px; line-height: 1.3;">מבצע היכרות!!!</h2>
-    <p style="font-family: 'Alef', sans-serif; font-size: 1.15rem; color: rgba(255,255,255,0.92); line-height: 1.8; margin-bottom: 32px;">יש לכם רילסים שיושבים ומחכים לעריכה?<br>ב-1,200 ש״ח לריל אני אערוך לכם אותם!<br><strong style="color: white;">פאן פאן פאן</strong></p>
-    <a href="#contact" style="display: inline-block; background: white; color: var(--coral); font-family: 'Alef', sans-serif; font-weight: 700; font-size: 1rem; padding: 14px 36px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,0.15); transition: transform 0.2s;">דברו איתי עכשיו</a>
+    <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; color: white; margin-bottom: 20px; line-height: 1.3;">Intro Deal!!!</h2>
+    <p style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: rgba(255,255,255,0.92); line-height: 1.8; margin-bottom: 32px;">Got reels just sitting there waiting to be edited?<br>For 1,200 NIS per reel, I'll edit them for you!<br><strong style="color: white;">Fun fun fun</strong></p>
+    <a href="#contact" style="display: inline-block; background: white; color: var(--coral); font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1rem; padding: 14px 36px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,0.15); transition: transform 0.2s;">Get in Touch</a>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <div class="section-label" style="color: var(--coral-light);">צרו קשר</div>
-  <h2 class="section-title">בואו נעשה משהו ביחד</h2>
-  <p class="section-sub">מעניין אתכם לשמוע עוד? תשלחו הודעה ואחזור אליכם בהקדם.</p>
+  <div class="section-label" style="color: var(--coral-light);">Contact</div>
+  <h2 class="section-title">Let's Make Something Together</h2>
+  <p class="section-sub">Interested in working together? Send a message and I'll get back to you soon.</p>
 
   <div class="contact-links">
     <a class="contact-link" href="mailto:shanylevy13@gmail.com">
       ✉️ shanylevy13@gmail.com
     </a>
     <a class="contact-link" href="tel:+972506666507">
-      📞 050-666-6507
+      📞 +972-50-666-6507
     </a>
     <a class="contact-link" href="https://instagram.com/shanyponygrrl" target="_blank">
       📸 @shanyponygrrl
@@ -1230,8 +1209,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <span>שני לוי ✦ פוני סטודיו</span>
-  <span>תוכן · שיווק · פודקאסטים · תל אביב</span>
+  <span>Shany Levy ✦ Pony Studio</span>
+  <span>Content · Marketing · Podcasts · Tel Aviv</span>
 </footer>
 
 <script>
@@ -1240,30 +1219,29 @@
   const pgCards = pgTrack.querySelectorAll('.pgallery-card');
   let pgCurrent = 0;
 
-  function pgVisible() { return window.innerWidth < 700 ? 2 : 4; }
-  function pgTotal() { return Math.ceil(pgCards.length / pgVisible()); }
+  const pgVisible = () => window.innerWidth <= 900 ? 2 : 4;
+  const pgMax = () => Math.ceil(pgCards.length / pgVisible()) - 1;
 
-  function pgBuildDots() {
+  function pgRender() {
+    const vis = pgVisible();
+    const cardW = pgTrack.parentElement.offsetWidth / vis;
+    pgTrack.style.transform = `translateX(${pgCurrent * cardW * vis * -1}px)`;
     pgDotsEl.innerHTML = '';
-    for (let i = 0; i < pgTotal(); i++) {
+    for (let i = 0; i <= pgMax(); i++) {
       const d = document.createElement('button');
       d.className = 'pgallery-dot' + (i === pgCurrent ? ' active' : '');
-      d.onclick = () => pgGoTo(i);
+      d.onclick = () => { pgCurrent = i; pgRender(); };
       pgDotsEl.appendChild(d);
     }
   }
 
-  function pgGoTo(i) {
-    pgCurrent = Math.max(0, Math.min(i, pgTotal() - 1));
-    const w = pgCards[0].offsetWidth + 20;
-    pgTrack.style.transform = `translateX(${pgCurrent * pgVisible() * w}px)`;
-    pgBuildDots();
+  function pgMove(dir) {
+    pgCurrent = Math.max(0, Math.min(pgMax(), pgCurrent + dir));
+    pgRender();
   }
 
-  function pgMove(dir) { pgGoTo(pgCurrent - dir); }
-
-  pgBuildDots();
-  window.addEventListener('resize', () => pgGoTo(0));
+  pgRender();
+  window.addEventListener('resize', pgRender);
 </script>
 </body>
 </html>
