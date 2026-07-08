@@ -1047,6 +1047,53 @@ footer {
 footer span { color: var(--pink); }
 
 /* =====================================================
+   SCROLL ANIMATIONS
+   ===================================================== */
+
+/* RTL wipe: reveals text right→left, matching Hebrew reading direction */
+.anim-wipe {
+  clip-path: inset(0 0 0 105%);
+  transition: clip-path 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+  transition-delay: var(--anim-delay, 0ms);
+}
+.anim-wipe.in-view { clip-path: inset(0 0 0 0); }
+
+/* Slide up + fade */
+.anim-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.48s ease, transform 0.48s cubic-bezier(0.34, 1.4, 0.64, 1);
+  transition-delay: var(--anim-delay, 0ms);
+}
+.anim-up.in-view { opacity: 1; transform: translateY(0); }
+
+/* Fade only — for elements with existing transforms (stat cards, rotated) */
+.anim-fade {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: var(--anim-delay, 0ms);
+}
+.anim-fade.in-view { opacity: 1; }
+
+/* Pop-in with spring — for skill pills */
+.anim-pop {
+  opacity: 0;
+  transform: scale(0.78);
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.34, 1.7, 0.64, 1);
+  transition-delay: var(--anim-delay, 0ms);
+}
+.anim-pop.in-view { opacity: 1; transform: scale(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-wipe, .anim-up, .anim-fade, .anim-pop {
+    clip-path: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* =====================================================
    RESPONSIVE
    ===================================================== */
 @media (max-width: 900px) {
@@ -1600,6 +1647,84 @@ footer span { color: var(--pink); }
   function pgMove(dir) { pgGoTo(pgCurrent - dir); }
 
   pgBuildDots();
+</script>
+
+<script>
+/* ── Scroll animations ── */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function prep(el, cls, delayMs) {
+    el.classList.add(cls);
+    if (delayMs) el.style.setProperty('--anim-delay', delayMs + 'ms');
+  }
+
+  // Section labels: wipe first, titles 90ms after
+  document.querySelectorAll('.section-label').forEach(el => prep(el, 'anim-wipe'));
+  document.querySelectorAll('.section-title').forEach(el => prep(el, 'anim-wipe', 90));
+  document.querySelectorAll('.section-sub').forEach(el => {
+    if (el.textContent.trim()) prep(el, 'anim-up', 170);
+  });
+
+  // Service cards — staggered
+  document.querySelectorAll('.service-card').forEach((el, i) => prep(el, 'anim-up', i * 65));
+
+  // Timeline cards — sequential slide-up
+  document.querySelectorAll('.timeline-card').forEach(el => prep(el, 'anim-up'));
+
+  // Stat cards — fade only (existing rotation transforms must survive)
+  document.querySelectorAll('.stat-card').forEach((el, i) => prep(el, 'anim-fade', i * 55));
+
+  // Statement section
+  const stmtH2 = document.querySelector('.statement-section h2');
+  const stmtP  = document.querySelector('.statement-section p');
+  if (stmtH2) prep(stmtH2, 'anim-up');
+  if (stmtP)  prep(stmtP, 'anim-up', 110);
+
+  // Skills pills — pop-in with cascade
+  document.querySelectorAll('.skill-pill').forEach((el, i) => prep(el, 'anim-pop', i * 32));
+
+  // About text paragraphs
+  document.querySelectorAll('.about-text p').forEach((el, i) => prep(el, 'anim-up', i * 60));
+
+  // Single observer
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0 });
+
+  document.querySelectorAll('.anim-wipe, .anim-up, .anim-fade, .anim-pop')
+    .forEach(el => observer.observe(el));
+
+  // Counter animation for stat numbers
+  function countUp(el, target, suffix) {
+    const duration = 1100;
+    const t0 = performance.now();
+    function tick(now) {
+      const p = Math.min((now - t0) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(ease * target).toLocaleString('he-IL') + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const m = el.textContent.trim().match(/^([\d,]+)(\+?)$/);
+      if (m) countUp(el, parseInt(m[1].replace(/,/g, ''), 10), m[2]);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0 });
+
+  document.querySelectorAll('.stat-number').forEach(el => counterObs.observe(el));
+})();
 </script>
 </body>
 </html>
