@@ -913,6 +913,45 @@ section { padding: clamp(60px, 8vw, 90px) clamp(24px, 6vw, 80px); }
 }
 
 /* =====================================================
+   CLIENTS
+   ===================================================== */
+.clients { background: var(--bg-alt); }
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.client-card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.client-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 var(--coral);
+}
+
+.client-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 720px) {
+  .clients-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* =====================================================
    SALE OFFER
    ===================================================== */
 .sale-section {
@@ -1524,6 +1563,24 @@ footer span { color: var(--pink); }
     <button class="pgallery-btn" onclick="pgMove(-1)">&#8249;</button>
     <div class="pgallery-dots" id="pgalleryDots"></div>
     <button class="pgallery-btn" onclick="pgMove(1)">&#8250;</button>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients" id="clients">
+  <div class="section-label">Clients</div>
+  <h2 class="section-title">Our Clients</h2>
+  <p class="section-sub"></p>
+
+  <div class="clients-grid">
+    <div class="client-card"><img src="images/client-all-fitness.jpeg" alt="ALL Fitness"></div>
+    <div class="client-card"><img src="images/client-fluff.jpeg" alt="The Fluff"></div>
+    <div class="client-card"><img src="images/client-creative.jpeg" alt="Client"></div>
+    <div class="client-card"><img src="images/client-9mr.png" alt="9mr"></div>
+    <div class="client-card"><img src="images/client-polish-institute.png" alt="Polish Institute"></div>
+    <div class="client-card"><img src="images/client-tlv-yafo.webp" alt="Tel Aviv-Yafo Municipality"></div>
+    <div class="client-card"><img src="images/client-midwife-clinic.jpeg" alt="Midwife Clinic"></div>
+    <div class="client-card"><img src="images/client-pride-center.png" alt="Tel Aviv-Yafo Pride Center"></div>
   </div>
 </section>
 

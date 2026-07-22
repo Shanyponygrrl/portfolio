@@ -911,6 +911,45 @@ section { padding: clamp(60px, 8vw, 90px) clamp(24px, 6vw, 80px); }
 }
 
 /* =====================================================
+   CLIENTS
+   ===================================================== */
+.clients { background: var(--bg-alt); }
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.client-card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.client-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 var(--coral);
+}
+
+.client-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 720px) {
+  .clients-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* =====================================================
    SALE OFFER
    ===================================================== */
 .sale-section {
@@ -1576,6 +1615,24 @@ footer span { color: var(--pink); }
   </div>
 </section>
 
+<!-- CLIENTS -->
+<section class="clients" id="clients">
+  <div class="section-label">לקוחות</div>
+  <h2 class="section-title">מלקוחותינו</h2>
+  <p class="section-sub"></p>
+
+  <div class="clients-grid">
+    <div class="client-card"><img src="images/client-all-fitness.jpeg" alt="ALL Fitness"></div>
+    <div class="client-card"><img src="images/client-fluff.jpeg" alt="The Fluff"></div>
+    <div class="client-card"><img src="images/client-creative.jpeg" alt="לקוח"></div>
+    <div class="client-card"><img src="images/client-9mr.png" alt="9מ״ר"></div>
+    <div class="client-card"><img src="images/client-polish-institute.png" alt="המכון הפולני"></div>
+    <div class="client-card"><img src="images/client-tlv-yafo.webp" alt="עיריית תל אביב-יפו"></div>
+    <div class="client-card"><img src="images/client-midwife-clinic.jpeg" alt="קליניקת מיילדות"></div>
+    <div class="client-card"><img src="images/client-pride-center.png" alt="המרכז הגאה תל אביב-יפו"></div>
+  </div>
+</section>
+
 <!-- SALE OFFER -->
 <section class="sale-section">
   <div class="sale-inner">
@@ -1681,6 +1738,9 @@ footer span { color: var(--pink); }
 
   // Skills pills — pop-in with cascade
   document.querySelectorAll('.skill-pill').forEach((el, i) => prep(el, 'anim-pop', i * 32));
+
+  // Client cards — pop-in with cascade
+  document.querySelectorAll('.client-card').forEach((el, i) => prep(el, 'anim-pop', i * 40));
 
   // About text paragraphs
   document.querySelectorAll('.about-text p').forEach((el, i) => prep(el, 'anim-up', i * 60));
