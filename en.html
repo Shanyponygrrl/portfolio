@@ -1089,6 +1089,80 @@ section { padding: clamp(60px, 8vw, 90px) clamp(24px, 6vw, 80px); }
   transform: translate(-2px,-2px);
 }
 
+.form-divider {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.95rem;
+  margin: 40px 0 24px;
+}
+
+.contact-form {
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.form-field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 6px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  border: 3px solid var(--bg);
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--coral);
+}
+
+.form-submit {
+  align-self: center;
+  background: var(--coral);
+  color: white;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 15px 44px;
+  border-radius: var(--radius-pill);
+  border: 3px solid var(--bg);
+  box-shadow: 4px 4px 0 var(--pink);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.form-submit:hover {
+  transform: translate(-2px,-2px);
+  box-shadow: 6px 6px 0 var(--pink);
+}
+
+.form-status {
+  text-align: center;
+  font-size: 0.9rem;
+  min-height: 1.2em;
+}
+
+.form-status.success { color: var(--mint); }
+.form-status.error { color: #ff8a80; }
+
 /* =====================================================
    FOOTER
    ===================================================== */
@@ -1647,6 +1721,28 @@ footer span { color: var(--pink); }
       💼 LinkedIn
     </a>
   </div>
+
+  <div class="form-divider">Or leave your details and I'll get back to you</div>
+
+  <form class="contact-form" id="contactForm">
+    <div class="form-field">
+      <label for="cf-name">Name</label>
+      <input class="form-input" type="text" id="cf-name" name="name" required>
+    </div>
+    <div class="form-field">
+      <label for="cf-email">Email</label>
+      <input class="form-input" type="email" id="cf-email" name="email" required>
+    </div>
+    <div class="form-field">
+      <label for="cf-message">Message</label>
+      <textarea class="form-textarea" id="cf-message" name="message" required></textarea>
+    </div>
+    <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
+    <input type="hidden" name="access_key" value="e492745e-6160-4e66-83d6-8e54d12458bd">
+    <input type="hidden" name="subject" value="New inquiry from website - Pony Studio">
+    <button type="submit" class="form-submit">Send Message</button>
+    <p class="form-status" id="formStatus"></p>
+  </form>
 </section>
 
 <!-- FOOTER -->
@@ -1685,6 +1781,41 @@ footer span { color: var(--pink); }
 
   pgBuildDots();
   window.addEventListener('resize', () => pgGoTo(0));
+</script>
+
+<script>
+(function() {
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  if (!form) return;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    status.textContent = 'Sending...';
+    status.className = 'form-status';
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(r => r.json())
+      .then(json => {
+        if (json.success) {
+          status.textContent = "Thanks! Your message is on its way, I'll get back to you soon 💌";
+          status.className = 'form-status success';
+          form.reset();
+        } else {
+          status.textContent = 'Something went wrong, please try again or email me directly.';
+          status.className = 'form-status error';
+        }
+      })
+      .catch(() => {
+        status.textContent = 'Something went wrong, please try again or email me directly.';
+        status.className = 'form-status error';
+      });
+  });
+})();
 </script>
 </body>
 </html>
